@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <title>Lab 9</title>
 
   <style>
@@ -69,21 +70,21 @@
     </form>
 
     <section id="error-btns">
-      <button>Console Log</button>
-      <button>Console Error</button>
-      <button>Console Count</button>
-      <button>Console Warn</button>
-      <button>Console Assert</button>
-      <button>Console Clear</button>
-      <button>Console Dir</button>
-      <button>Console dirxml</button>
-      <button>Console Group Start</button>
-      <button>Console Group End</button>
-      <button>Console Table</button>
-      <button>Start Timer</button>
-      <button>End Timer</button>
-      <button>Console Trace</button>
-      <button>Trigger a Global Error</button>
+      <button id="consoleLog">Console Log</button>
+      <button id="consoleError">Console Error</button>
+      <button id="consoleCount">Console Count</button>
+      <button id="consoleWarn">Console Warn</button>
+      <button id="consoleAssert">Console Assert</button>
+      <button id="consoleClear">Console Clear</button>
+      <button id="consoleDir">Console Dir</button>
+      <button id="consoleDirXML">Console dirxml</button>
+      <button id="consoleGroupStart">Console Group Start</button>
+      <button id="consoleGroupEnd">Console Group End</button>
+      <button id="consoleTable">Console Table</button>
+      <button id="startTimer">Start Timer</button>
+      <button id="endTimer">End Timer</button>
+      <button id="consoleTrace">Console Trace</button>
+      <button id="globalError">Trigger a Global Error</button>
     </section>
   </main>
 
@@ -102,6 +103,79 @@
 
     // Start your code here
     // You may move this JS to another file if you wish
+
+
+    let consoleLog = document.getElementById('consoleLog');
+    consoleLog.addEventListener('click', () => {
+      console.log('Console Log Demo');
+    })
+
+    let consoleError = document.getElementById('consoleError');
+    consoleError.addEventListener('click', () => {
+      console.error('Console Error Demo');
+    })
+
+    let consoleCount = document.getElementById('consoleCount');
+    consoleCount.addEventListener('click', () => {
+      console.count('Count Button: ');
+    })
+
+    let consoleWarn = document.getElementById('consoleWarn');
+    consoleWarn.addEventListener('click', () => {
+      console.warn('Console Warn Button');
+    })
+
+    let consoleAssert = document.getElementById('consoleAssert');
+    consoleAssert.addEventListener('click', () => {
+      console.assert(2 == 3, "False");
+    })
+
+    let consoleClear = document.getElementById('consoleClear');
+    consoleClear.addEventListener('click', () => {
+      console.clear();
+    })
+
+    let consoleDir = document.getElementById('consoleDir');
+    consoleDir.addEventListener('click', () => {
+      console.dir(document.getElementById('consoleDir'));
+    })
+
+    let consoleDirXML = document.getElementById('consoleDirXML');
+    consoleDirXML.addEventListener('click', () => {
+      console.dirxml(document.getElementById('error-btns'));
+    })
+
+    let consoleGroupStart = document.getElementById('consoleGroupStart');
+    consoleGroupStart.addEventListener('click', () => {
+      console.group();
+    })
+
+    let consoleGroupEnd = document.getElementById('consoleGroupEnd');
+    consoleGroupEnd.addEventListener('click', () => {
+      console.groupEnd();
+    })
+
+    let consoleTable = document.getElementById('consoleTable');
+    consoleTable.addEventListener('click', () => {
+      console.table(['testing', 'is', 'cool']);
+    })
+
+    let startTimer = document.getElementById('startTimer');
+    startTimer.addEventListener('click', () => {
+      console.time('Timer: ');
+    })
+
+    let endTimer = document.getElementById('endTimer');
+    endTimer.addEventListener('click', () => {
+      console.timeEnd();
+    })
+
+    let consoleTrace = document.getElementById('consoleTrace');
+    consoleTrace.addEventListener('click', () => {
+      console.trace();
+    })
+    
+
   </script>
 </body>
 
