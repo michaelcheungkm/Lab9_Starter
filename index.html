@@ -108,6 +108,21 @@
     let consoleLog = document.getElementById('consoleLog');
     consoleLog.addEventListener('click', () => {
       console.log('Console Log Demo');
+
+      try {
+        document.getElementsByClassName('missing-button').style.color = 'red';
+      } catch (err) {
+        const errorString = `This HTML page is missing the 'missing-button.'\n ${err}`;
+        let throwError = new MissingButtonError(errorString)
+        throw(throwError);
+      } finally {
+        const body = document.querySelector('body');
+        body.style.backgroundColor = 'red';
+        console.log(body);
+        setTimeout(() => {
+          body.style.backgroundColor = 'white';
+        }, 100);
+      }
     })
 
     let consoleError = document.getElementById('consoleError');
@@ -174,6 +189,16 @@
     consoleTrace.addEventListener('click', () => {
       console.trace();
     })
+
+
+    // ERROR
+
+    class MissingButtonError extends Error {
+      constructor (message) {
+        super(message);
+        this.name = 'MissingButtonError';
+      }
+    }
     
 
   </script>
