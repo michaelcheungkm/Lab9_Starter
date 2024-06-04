@@ -2,6 +2,14 @@
 <html lang="en">
 
 <head>
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS && TrackJS.install({ 
+      token: "16ff9cd7840749b1b8c7e23c87e13fd8"
+      // for more configuration options, see https://docs.trackjs.com
+    });
+  </script>
+                        
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -190,6 +198,11 @@
       console.trace();
     })
 
+    let globalError = document.getElementById('globalError');
+    globalError.addEventListener('click', () => {
+      nonExistentFunction();
+    })
+
 
     // ERROR
 
@@ -199,6 +212,17 @@
         this.name = 'MissingButtonError';
       }
     }
+
+    window.onerror = function (message, source, lineno, colno, error) {
+      console.log("Global error caught!");
+      console.log("Error message: " + message);
+      console.log("Source: " + source);
+      console.log("Line: " + lineno);
+      console.log("Column: " + colno);
+      console.log("Error object: " + error);
+      TrackJS.track('Error:', message, 'From:', source, lineno, colno, '\n', error);
+      return true;
+    };
     
 
   </script>
